@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "RedHatText";
+  src: url("/assets/fonts/RedHatText-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+}
+body {
+  font-family: "RedHatText", sans-serif;
+}
+
+@layer components {
+  .main {
+    @apply grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-20 p-20;
+  }
+  .header {
+    @apply flex justify-between items-center p-5;
+  }
+}
+@layer base {
+  h1 {
+    @apply font-extrabold text-[#8b4513];
+  }
+  input {
+    @apply border-2 border-[#8b4513] hover:border-[#8b6517] focus:border-[#8b6517] p-1 px-2.5 rounded-full font-[10px];
+  }
+  input::placeholder {
+    @apply text-xs text-gray-500;
+  }
+}
