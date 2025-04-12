@@ -2,16 +2,13 @@ import {
   createContext,
   useState,
   useEffect,
-  useContext,
   Children,
 } from "react";
 import productlist from "../components/ProductList";
 
 const ProductContext = createContext();
 
-export const useProduct = () => useContext(ProductContext);
-
-export const ProductProvider = ({ children }) => {
+const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
 
@@ -51,3 +48,5 @@ export const ProductProvider = ({ children }) => {
     </ProductContext.Provider>
   );
 };
+
+export { ProductContext, ProductProvider  };

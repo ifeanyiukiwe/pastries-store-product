@@ -1,17 +1,18 @@
-import { useState } from "react";
-import shopbag from "/assets/images/shopping-bag.png";
-import { ProductProvider, useProduct } from "./context/ProductContext";
+import { useContext } from "react";
+// import shopbag from "/assets/images/shopping-bag.png";
+import shopbag from "./component/assets/images/shopping-bag.png";
+import { ProductContext } from "./context/ProductContext";
 import ProductCard from "./components/ProductCard";
 import "./App.css";
 
 function App() {
-  const SearchInput = () => {
-    const { filterProducts } = useProduct();
+  const { filterProducts } = useContext(ProductContext);
 
-    const handleSearch = (e) => {
-      filterProducts(e.target.value);
-    };
+  // const SearchInput = () => {};
+  const handleSearch = (e) => {
+    filterProducts(e.target.value);
   };
+  
   return (
     <>
       <div className="bg-[#fcf8f5]">

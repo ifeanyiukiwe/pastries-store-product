@@ -1,7 +1,8 @@
-import { useProduct } from "../context/ProductContext";
+import {useContext} from "react"
+import { ProductContext } from "../context/ProductContext";
 
 const ProductCard = () => {
-  const { filtered } = useProduct();
+  const { filtered } = useContext(ProductContext);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">

@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @font-face {
   font-family: "RedHatText";
-  src: url("/assets/fonts/RedHatText-VariableFont_wght.ttf") format("truetype");
+  /* src: url("/assets/fonts/RedHatText-VariableFont_wght.ttf") format("truetype"); */
+  src: url("/components/assets/fonts/RedHatText-VariableFont_wght.ttf")
+    format("truetype");
   font-weight: normal;
 }
 body {
@@ -25,5 +27,17 @@ body {
   }
   input::placeholder {
     @apply text-xs text-gray-500;
+  }
+}
+
+.desktopProductItems {
+  width:  100%;
+
+}
+
+@media (max-width: 768px) {
+  .IpadProductItems {
+      width:
+  
   }
 }
