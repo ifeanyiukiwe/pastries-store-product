@@ -32,14 +32,14 @@ const ProductCard = () => {
                 {cartItem ? (
                   <div className=" btn quantity-controls flex items-center gap-2">
                     <button
-                      className="bg-gray-200 px-1 rounded"
+                      className="bg-gray-200 px-2 rounded"
                       onClick={() => handleQuantityChange(product.id, -1)}
                     >
                       -
                     </button>
                     <span className="font-semibold">{cartItem.quantity}</span>
                     <button
-                      className="bg-gray-200 px-1 rounded"
+                      className="bg-gray-200 px-2 rounded"
                       onClick={() => handleQuantityChange(product.id, 1)}
                     >
                       +
