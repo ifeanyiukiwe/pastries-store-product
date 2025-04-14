@@ -3,6 +3,7 @@ import shopbag from "../src/components/assets/images/shopping-bag.png";
 import { ProductContext } from "./context/ProductContext";
 import ProductCard from "./components/ProductCard";
 import SideCart from "./components/SideCart";
+import Footer from "./components/Footer"; // ✅ Import the Footer component
 import "./App.css";
 
 function App() {
@@ -21,17 +22,17 @@ function App() {
   };
 
   const handleRefreshPage = () => {
-    window.location.reload(); // This will refresh the page when clicking "Dessert"
+    window.location.reload();
   };
 
   return (
     <>
-      <div className="bg-[#fff]">
+      <div className="bg-[#fff] min-h-screen flex flex-col justify-between">
         {/* Header */}
         <div className="header fixed top-0 w-full z-50 bg-white flex justify-between items-center p-5 shadow-md">
           <h1
             className="text-xl font-bold text-[#8b4513] cursor-pointer"
-            onClick={handleRefreshPage} // Attach the refresh handler here
+            onClick={handleRefreshPage}
           >
             Dessert
           </h1>
@@ -74,7 +75,11 @@ function App() {
         </div>
 
         {/* Main Content */}
-        <div className={`pt-24 ${isCartOpen ? "flex flex-col gap-4" : ""}`}>
+        <div
+          className={`pt-24 pb-10 flex-grow ${
+            isCartOpen ? "flex flex-col gap-4" : ""
+          }`}
+        >
           <ProductCard isCartOpen={isCartOpen} />
         </div>
 
@@ -87,6 +92,9 @@ function App() {
             removeFromCart={removeFromCart}
           />
         )}
+
+        {/* ✅ Footer */}
+        <Footer />
       </div>
     </>
   );
