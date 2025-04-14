@@ -1,36 +1,92 @@
 import { useContext } from "react";
-// import shopbag from "/assets/images/shopping-bag.png";
-import shopbag from "./component/assets/images/shopping-bag.png";
+import shopbag from "../src/components/assets/images/shopping-bag.png";
 import { ProductContext } from "./context/ProductContext";
 import ProductCard from "./components/ProductCard";
+import SideCart from "./components/SideCart";
 import "./App.css";
 
 function App() {
-  const { filterProducts } = useContext(ProductContext);
+  const {
+    filterProducts,
+    cart,
+    isCartOpen,
+    setIsCartOpen,
+    handleQuantityChange,
+    removeFromCart,
+    totalItems,
+  } = useContext(ProductContext);
 
-  // const SearchInput = () => {};
   const handleSearch = (e) => {
     filterProducts(e.target.value);
   };
-  
+
+  const handleRefreshPage = () => {
+    window.location.reload(); // This will refresh the page when clicking "Dessert"
+  };
+
   return (
     <>
-      <div className="bg-[#fcf8f5]">
-        <div className="header">
-          <h1>Dessert</h1>
+      <div className="bg-[#fff]">
+        {/* Header */}
+        <div className="header fixed top-0 w-full z-50 bg-white flex justify-between items-center p-5 shadow-md">
+          <h1
+            className="text-xl font-bold text-[#8b4513] cursor-pointer"
+            onClick={handleRefreshPage} // Attach the refresh handler here
+          >
+            Dessert
+          </h1>
+
           <div>
             <input
               type="text"
               placeholder="Search Products..."
               onChange={handleSearch}
+              className="border-2 border-[#8b4513] rounded-full p-1 px-2.5"
             />
           </div>
-          <div>
-            <img src={shopbag} alt="shopping bag" width="40px" />
+
+          {/* Hamburger / Shopbag */}
+          <div className="relative">
+            {isCartOpen ? (
+              <button
+                onClick={() => setIsCartOpen(false)}
+                className="text-2xl font-bold"
+              >
+                &#9776;
+              </button>
+            ) : (
+              <>
+                <img
+                  src={shopbag}
+                  alt="shopping bag"
+                  width="40px"
+                  className="cursor-pointer"
+                  onClick={() => setIsCartOpen(true)}
+                />
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                    {totalItems}
+                  </span>
+                )}
+              </>
+            )}
           </div>
         </div>
-        {/* <SearchInput /> */}
-        <ProductCard />
+
+        {/* Main Content */}
+        <div className={`pt-24 ${isCartOpen ? "flex flex-col gap-4" : ""}`}>
+          <ProductCard isCartOpen={isCartOpen} />
+        </div>
+
+        {/* SideCart */}
+        {isCartOpen && (
+          <SideCart
+            cart={cart}
+            onClose={() => setIsCartOpen(false)}
+            handleQuantityChange={handleQuantityChange}
+            removeFromCart={removeFromCart}
+          />
+        )}
       </div>
     </>
   );

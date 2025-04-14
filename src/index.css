@@ -12,32 +12,42 @@ body {
 
 @layer components {
   .main {
-    @apply grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-20 p-20;
+    @apply grid grid-cols-[repeat(auto-fit,minmax(450px,1fr))] gap-20 p-20 bg-[#fcf8f5];
   }
   .header {
-    @apply flex justify-between items-center p-5;
+    @apply fixed top-0 left-0 w-full z-50 flex justify-between items-center p-5 bg-white shadow-md;
+  }
+
+  .main picture {
+    @apply relative;
+  }
+  .qt-ct {
+    @apply absolute top-1/1 left-1/2 sm:top-[100%] sm:left-[50%] 
+           transform -translate-x-1/2 -translate-y-1/2 
+           flex justify-center items-center;
+  }
+
+  .btn {
+    @apply border-2 border-[#e9bc49] hover:bg-[#f4e8d6] rounded-full w-35 flex justify-center items-center py-2 px-1 cursor-pointer gap-x-3 text-xs font-bold;
   }
 }
 @layer base {
   h1 {
     @apply font-extrabold text-[#8b4513];
   }
+  p {
+    @apply mt-5 text-[#dda935];
+  }
+  h2 {
+    @apply text-[#935016];
+  }
+  small {
+    @apply text-[#ce6665];
+  }
   input {
     @apply border-2 border-[#8b4513] hover:border-[#8b6517] focus:border-[#8b6517] p-1 px-2.5 rounded-full font-[10px];
   }
   input::placeholder {
     @apply text-xs text-gray-500;
-  }
-}
-
-.desktopProductItems {
-  width:  100%;
-
-}
-
-@media (max-width: 768px) {
-  .IpadProductItems {
-      width:
-  
   }
 }
