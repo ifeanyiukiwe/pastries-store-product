@@ -28,7 +28,11 @@ const ProductCard = () => {
                 alt={product.name}
                 className="w-full h-auto object-cover rounded"
               />
-              <div className="qt-ct">
+              <div
+                className="absolute top-full left-1/2 sm:top-[100%] sm:left-[50%] 
+           transform -translate-x-1/2 -translate-y-1/2 
+           flex justify-center items-center"
+              >
                 {cartItem ? (
                   <div className=" btn quantity-controls flex items-center gap-2">
                     <button
