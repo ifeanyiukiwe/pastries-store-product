@@ -32,24 +32,21 @@ const ProductCard = () => {
                 {cartItem ? (
                   <div className=" btn quantity-controls flex items-center gap-2">
                     <button
-                      className="bg-gray-200 px-2 rounded"
+                      className="bg-gray-200 px-1 rounded"
                       onClick={() => handleQuantityChange(product.id, -1)}
                     >
                       -
                     </button>
                     <span className="font-semibold">{cartItem.quantity}</span>
                     <button
-                      className="bg-gray-200 px-2 rounded"
+                      className="bg-gray-200 px-1 rounded"
                       onClick={() => handleQuantityChange(product.id, 1)}
                     >
                       +
                     </button>
                   </div>
                 ) : (
-                  <button
-                    className="btn"
-                    onClick={() => addToCart(product)} // ✅ Fix: add to cart
-                  >
+                  <button className="btn" onClick={() => addToCart(product)}>
                     <ShoppingCartIcon className="w-4 h-4 text-gray-700" /> Add
                     To Cart
                   </button>

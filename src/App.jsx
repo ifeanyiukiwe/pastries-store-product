@@ -3,7 +3,7 @@ import shopbag from "../src/components/assets/images/shopping-bag.png";
 import { ProductContext } from "./context/ProductContext";
 import ProductCard from "./components/ProductCard";
 import SideCart from "./components/SideCart";
-import Footer from "./components/Footer"; // ✅ Import the Footer component
+import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
@@ -28,7 +28,6 @@ function App() {
   return (
     <>
       <div className="bg-[#fff] min-h-screen flex flex-col justify-between">
-        {/* Header */}
         <div className="header fixed top-0 w-full z-50 bg-white flex justify-between items-center p-5 shadow-md">
           <h1
             className="text-xl font-bold text-[#8b4513] cursor-pointer"
@@ -46,7 +45,6 @@ function App() {
             />
           </div>
 
-          {/* Hamburger / Shopbag */}
           <div className="relative">
             {isCartOpen ? (
               <button
@@ -74,7 +72,6 @@ function App() {
           </div>
         </div>
 
-        {/* Main Content */}
         <div
           className={`pt-24 pb-10 flex-grow ${
             isCartOpen ? "flex flex-col gap-4" : ""
@@ -83,7 +80,6 @@ function App() {
           <ProductCard isCartOpen={isCartOpen} />
         </div>
 
-        {/* SideCart */}
         {isCartOpen && (
           <SideCart
             cart={cart}

@@ -22,7 +22,7 @@ body {
     @apply relative;
   }
   .qt-ct {
-    @apply absolute top-1/1 left-1/2 sm:top-[100%] sm:left-[50%] 
+    @apply absolute top-full left-1/2 sm:top-[100%] sm:left-[50%] 
            transform -translate-x-1/2 -translate-y-1/2 
            flex justify-center items-center;
   }
