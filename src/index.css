@@ -12,20 +12,32 @@ body {
 
 @layer components {
   .main {
-    @apply grid grid-cols-[repeat(auto-fit,minmax(450px,1fr))] gap-20 p-20 bg-[#fcf8f5];
+    @apply grid gap-20 p-20 bg-[#fcf8f5];
+
+    @apply grid-cols-1 place-items-center sm:grid-cols-[repeat(auto-fit,minmax(250px,1fr))];
   }
+
   .header {
     @apply fixed top-0 left-0 w-full z-50 flex justify-between items-center p-5 bg-white shadow-md;
   }
+  .product-card {
+    @apply flex flex-col border-[1px] border-[#ddd] p-[15px] text-start rounded-lg shadow-md hover:scale-105 transition-transform duration-300 ease-in-out relative overflow-hidden;
+  }
+  .product-card picture {
+    @apply relative flex justify-center items-center;
+  }
+  .cart {
+    @apply absolute top-[51%] left-[50%] sm:top-[72%] flex justify-center items-center w-[80%] transform -translate-x-1/2 -translate-y-1/2;
+  }
 
-  .main picture {
+  /* .main picture {
     @apply relative;
   }
   .qt-ct {
     @apply absolute top-full left-1/2 sm:top-[100%] sm:left-[50%] 
            transform -translate-x-1/2 -translate-y-1/2 
            flex justify-center items-center;
-  }
+  } */
 
   .btn {
     @apply border-2 border-[#e9bc49] hover:bg-[#f4e8d6] rounded-full w-35 flex justify-center items-center py-2 px-1 cursor-pointer gap-x-3 text-xs font-bold;
