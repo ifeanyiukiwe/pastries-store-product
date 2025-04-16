@@ -14,20 +14,20 @@ body {
   .main {
     @apply grid gap-20 p-20 bg-[#fcf8f5];
 
-    @apply grid-cols-1 place-items-center sm:grid-cols-[repeat(auto-fit,minmax(250px,1fr))];
+    @apply grid-cols-1 place-items-center sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))];
   }
 
   .header {
     @apply fixed top-0 left-0 w-full z-50 flex justify-between items-center p-5 bg-white shadow-md;
   }
   .product-card {
-    @apply flex flex-col border-[1px] border-[#ddd] p-[15px] text-start rounded-lg shadow-md hover:scale-105 transition-transform duration-300 ease-in-out relative overflow-hidden;
+    @apply flex flex-col w-[350px] border-[1px] border-[#ddd] p-[15px] text-start rounded-lg shadow-md hover:scale-105 transition-transform duration-300 ease-in-out relative overflow-hidden;
   }
   .product-card picture {
     @apply relative flex justify-center items-center;
   }
   .cart {
-    @apply absolute top-[51%] left-[50%] sm:top-[72%] flex justify-center items-center w-[80%] transform -translate-x-1/2 -translate-y-1/2;
+    @apply absolute top-[65%] left-[50%] sm:top-[75%] flex justify-center items-center w-[80%] transform -translate-x-1/2 -translate-y-1/2;
   }
 
   /* .main picture {
@@ -57,7 +57,7 @@ body {
     @apply text-[#ce6665];
   }
   input {
-    @apply border-2 border-[#8b4513] hover:border-[#8b6517] focus:border-[#8b6517] p-1 px-2.5 rounded-full font-[10px];
+    @apply border-2 border-[#8b4513] hover:border-[#8b6517] focus:border-[#8b6517] p-1 sm:px-10 rounded-full font-[10px];
   }
   input::placeholder {
     @apply text-xs text-gray-500;

@@ -28,9 +28,9 @@ function App() {
   return (
     <>
       <div className="bg-[#fff] min-h-screen flex flex-col justify-between">
-        <div className="header fixed top-0 w-full z-50 bg-white flex justify-between items-center p-5 shadow-md">
+        <div className="header fixed top-0 w-full z-50 bg-white flex justify-between items-center p-5 sm:px-20 shadow-md">
           <h1
-            className="text-xl font-bold text-[#8b4513] cursor-pointer"
+            className="text-xl font-extrabold text-[#8b4513] cursor-pointer"
             onClick={handleRefreshPage}
           >
             Dessert
@@ -41,7 +41,7 @@ function App() {
               type="text"
               placeholder="Search Products..."
               onChange={handleSearch}
-              className="border-2 border-[#8b4513] rounded-full p-1 px-2.5"
+              className="border-2 border-[#8b4513] rounded-full p-1 px-2"
             />
           </div>
 
