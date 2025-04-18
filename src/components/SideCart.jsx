@@ -95,7 +95,7 @@ const SideCart = ({
                     onClick={() => removeFromCart(item.id)}
                     className="text-sm text-red-500 hover:text-red-700 absolute top-0 right-0"
                   >
-                    ✖
+                    remove
                   </button>
                 </div>
               ))}

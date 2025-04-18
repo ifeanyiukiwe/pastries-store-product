@@ -17,9 +17,9 @@ body {
     @apply grid-cols-1 place-items-center sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))];
   }
 
-  .header {
-    @apply fixed top-0 left-0 w-full z-50 flex justify-between items-center p-5 bg-white shadow-md;
-  }
+  /* .header {
+    @apply fixed top-0 left-0 w-full z-50  p-5 bg-white shadow-md;
+  } */
   .product-card {
     @apply flex flex-col w-[350px] border-[1px] border-[#ddd] p-[15px] text-start rounded-lg shadow-md hover:scale-105 transition-transform duration-300 ease-in-out relative overflow-hidden;
   }
@@ -29,15 +29,6 @@ body {
   .cart {
     @apply absolute top-[65%] left-[50%] sm:top-[75%] flex justify-center items-center w-[80%] transform -translate-x-1/2 -translate-y-1/2;
   }
-
-  /* .main picture {
-    @apply relative;
-  }
-  .qt-ct {
-    @apply absolute top-full left-1/2 sm:top-[100%] sm:left-[50%] 
-           transform -translate-x-1/2 -translate-y-1/2 
-           flex justify-center items-center;
-  } */
 
   .btn {
     @apply border-2 border-[#e9bc49] hover:bg-[#f4e8d6] rounded-full w-35 flex justify-center items-center py-2 px-1 cursor-pointer gap-x-3 text-xs font-bold;
@@ -57,9 +48,30 @@ body {
     @apply text-[#ce6665];
   }
   input {
-    @apply border-2 border-[#8b4513] hover:border-[#8b6517] focus:border-[#8b6517] p-1 sm:px-10 rounded-full font-[10px];
+    @apply border-2 border-[#8b4513]  hover:border-[#8b6517] focus:border-[#8b6517] p-1 sm:px-10 rounded-full font-[10px];
   }
   input::placeholder {
     @apply text-xs text-gray-500;
   }
+}
+
+@keyframes bounceInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(30px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.bounce-in-left {
+  animation: bounceInLeft 0.8s ease-out;
 }

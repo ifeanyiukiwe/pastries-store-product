@@ -32,7 +32,7 @@ const ProductCard = () => {
 
             <div className="cart">
               {cartItem ? (
-                <div className="border-2 border-[#e9bc49] hover:bg-[#f4e8d6] rounded-full flex justify-center items-center py-2 px-3 cursor-pointer gap-x-3 text-xs font-bold">
+                <div className="border-2 border-[#e9bc49]  hover:bg-[#f4e8d6] rounded-full flex justify-center items-center py-2 px-3 cursor-pointer gap-x-3 text-xs font-bold">
                   <button
                     className="bg-gray-200 px-2 rounded"
                     onClick={() => handleQuantityChange(product.id, -1)}
@@ -49,10 +49,10 @@ const ProductCard = () => {
                 </div>
               ) : (
                 <button
-                  className="border-2 border-[#e9bc49] hover:bg-[#f4e8d6] rounded-full flex justify-center items-center py-2 px-3 cursor-pointer gap-x-3 text-xs font-bold"
+                  className="border-2 border-[#e9bc49] bg-[#f4e8d6] text-gray-700  hover:bg-[#aea391] rounded-full flex justify-center items-center py-2 px-3 cursor-pointer gap-x-3 text-xs font-bold"
                   onClick={() => addToCart(product)}
                 >
-                  <ShoppingCartIcon className="w-4 h-4 text-gray-700" /> Add To
+                  <ShoppingCartIcon className="w-4 h-4 text-gray-700" /> Add to
                   Cart
                 </button>
               )}

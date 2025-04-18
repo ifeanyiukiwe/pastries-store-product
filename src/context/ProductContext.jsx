@@ -6,8 +6,11 @@ const ProductContext = createContext();
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [cart, setCart] = useState({});
-  const [isCartOpen, setIsCartOpen] = useState(false); // For SideCart visibility
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cart, setCart] = useState(() => {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : {};
+  });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -42,19 +45,25 @@ const ProductProvider = ({ children }) => {
       ...prev,
       [product.id]: {
         ...product,
-        quantity: (prev[product.id]?.quantity || 0) + 1, // Add 1 to the quantity of the product
+        quantity: (prev[product.id]?.quantity || 0) + 1,
       },
     }));
   };
 
+  // This function ensures quantity can't go below 1
   const handleQuantityChange = (id, amount) => {
     setCart((prev) => {
-      const updatedQuantity = (prev[id]?.quantity || 0) + amount;
+      const currentQuantity = prev[id]?.quantity || 0;
+      const updatedQuantity =
+        amount < 0
+          ? Math.max(currentQuantity + amount, 1)
+          : currentQuantity + amount;
+
       if (updatedQuantity <= 0) {
-        // If quantity is 0 or less, remove the product from the cart
-        const { [id]: _, ...rest } = prev;
-        return rest;
+        // Do not update the cart if quantity is zero or less
+        return prev;
       }
+
       return {
         ...prev,
         [id]: {
@@ -72,10 +81,7 @@ const ProductProvider = ({ children }) => {
     });
   };
 
-  const totalItems = Object.values(cart).reduce(
-    (acc, item) => acc + item.quantity,
-    0
-  ); // Calculate the total number of items in the cart
+  const totalItems = Object.keys(cart).length;
 
   return (
     <ProductContext.Provider
@@ -84,7 +90,7 @@ const ProductProvider = ({ children }) => {
         filterProducts,
         cart,
         addToCart,
-        handleQuantityChange,
+        handleQuantityChange, // The corrected quantity change handler
         removeFromCart,
         totalItems,
         isCartOpen,
