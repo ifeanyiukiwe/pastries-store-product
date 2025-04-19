@@ -7,6 +7,7 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [cart, setCart] = useState(() => {
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : {};
@@ -15,14 +16,17 @@ const ProductProvider = ({ children }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // Simulating API call with a delay (you can replace this with an actual API call)
+        setLoading(true);
         const response = await new Promise((resolve) =>
           setTimeout(() => resolve(productlist), 500)
         );
         setProducts(response);
-        setFiltered(response); // Set filtered products initially as all products
+        setFiltered(response);
+        setLoading(false);
       } catch (error) {
         console.log("Failed to fetch product", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -95,6 +99,7 @@ const ProductProvider = ({ children }) => {
         totalItems,
         isCartOpen,
         setIsCartOpen,
+        loading,
       }}
     >
       {children}
